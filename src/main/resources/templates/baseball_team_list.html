@@ -7,13 +7,11 @@
 </head>
 <body>
     <h1>野球チーム一覧</h1>
-    <a th:href="@{/team/detail}">detailを確認</a>
-    
-    <!-- <a th:href="@{/detail?id=}+${team.id}">読売ジャイアンツ</a>
-    <a th:href="@{/detail?id=}+${team.id}">阪神タイガース</a>
-    <a th:href="@{/detail?id=}+${team.id}">中日ドラゴンズ</a>
-    <a th:href="@{/detail?id=}+${team.id}">横浜DeNAベイスターズ</a>
-    <a th:href="@{/detail?id=}+${team.id}">広島東洋カープ</a>
-    <a th:href="@{/detail?id=}+${team.id}">東京ヤクルトスワローズ</a> -->
+
+    <div th:each="team:${teamList}">
+        <a th:href="@{/team/detail?id=}+${team.id}" th:text="${team.teamName}"></a>
+        <br>
+    </div>
+
 </body>
 </html>
