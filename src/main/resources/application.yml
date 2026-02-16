@@ -1,9 +1,6 @@
 spring:
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/student
-    username: 
-    password: 
+  profiles:
+    active: local
 server:
   servlet:
     context-path: /ex-intermediate
