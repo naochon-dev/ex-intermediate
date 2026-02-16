@@ -16,11 +16,19 @@ public class TeamService {
     @Autowired
     private TeamRepository repository;
 
-    
+    /**
+     * 指定されたIDで検索を行う.
+     * @param id ID
+     * @return 検索されたチーム情報
+     */
     public Team load(Integer id){
         return repository.load(id);
     }
 
+    /**
+     * 全件検索を行う.
+     * @return 全チーム一覧
+     */
     public List<Team> findAll(){
         return repository.findAll();
     }

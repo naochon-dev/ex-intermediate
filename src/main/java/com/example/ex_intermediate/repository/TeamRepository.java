@@ -32,6 +32,11 @@ public class TeamRepository {
         };
     
 
+    /**
+     * 主キー検索を行う.
+     * @param id ID
+     * @return 検索されたチーム情報
+     */
     public Team load(Integer id){
         String sql
             ="SELECT id,league_name,team_name,headquarters,inauguration,history FROM teams WHERE id=:id";
@@ -41,11 +46,15 @@ public class TeamRepository {
             Team team = template.queryForObject(sql, param, TEAM_ROW_MAPPER);
 
             team.formatHistory();
-            
+
             return team;
     }
 
 
+    /**
+     * 全件検索を行う.
+     * @return 全チーム一覧
+     */
     public List<Team> findAll(){
         String sql
             ="SELECT id,league_name,team_name,headquarters,inauguration,history FROM teams ORDER BY to_date(inauguration, 'YYYY年FMMM月FMDD日')";
