@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .first_line {
+            background-color: rgb(212, 221, 237);
+        }
+        .third_line {
+            background-color: rgb(212, 221, 237);
+        }
+        .second_line {
+            background-color: rgb(126, 153, 200);
+        }
+    </style>
+</head>
+<body>
+    <h1>ホテル検索</h1>
+    <form th:action="@{/searchHotel/showResult}" method="post">
+        <input type="text" name="borderPrice">円以下
+        <br>
+        <br>
+        <button>検索</button>
+    </form>
+    <br>
+
+        <div th:each="hotel:${hotelList}">
+            <table th:object="${hotel}" border="1">
+                <tr class="first_line">
+                    <th>ホテル名</th>
+                    <td th:text="${hotel.hotelName}"></td>                            
+                </tr>
+                <tr class="second_line">
+                    <th>最寄駅</th>
+                    <td th:text="${hotel.nearestStation}"></td>
+                </tr>
+                <tr class="third_line">
+                    <th>価格</th>
+                    <td th:text="${hotel.price}">円</td>
+                </tr>
+            </table>
+            <br>
+        </div>
+
+    
+</body>
+</html>
