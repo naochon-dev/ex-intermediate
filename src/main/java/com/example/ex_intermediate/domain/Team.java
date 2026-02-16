@@ -9,6 +9,10 @@ public class Team {
     private String inauguration;
     private String history;
 
+    public void formatHistory(){
+        setHistory(getHistory().replace("↓","<br>↓<br>"));
+    }
+
     @Override
     public String toString() {
         return "Team [id=" + id + ", leagueName=" + leagueName + ", teamName=" + teamName + ", headquaters="

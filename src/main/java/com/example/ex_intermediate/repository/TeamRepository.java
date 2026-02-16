@@ -40,6 +40,8 @@ public class TeamRepository {
 
             Team team = template.queryForObject(sql, param, TEAM_ROW_MAPPER);
 
+            team.formatHistory();
+            
             return team;
     }
 

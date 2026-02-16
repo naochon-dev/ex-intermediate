@@ -18,7 +18,7 @@
     <p th:text="${team.inauguration}"></p>
 
     <h2>歴史</h2>
-    <p th:text="${team.history}"></p>
+    <p th:utext="${team.history}"></p>
 
     <form th:action="@{/team}" method="get">
     <button>戻る</button>
