@@ -1,5 +1,8 @@
 package com.example.ex_intermediate.domain;
 
+/**
+ * @author NaoIwakawa
+ */
 public class Hotel {
 
     private Integer id;

@@ -11,6 +11,9 @@ import org.springframework.stereotype.Repository;
 
 import com.example.ex_intermediate.domain.Hotel;
 
+/**
+ * @author NaoIwakawa
+ */
 @Repository
 public class SearchHotelRepository {
 
@@ -30,6 +33,11 @@ public class SearchHotelRepository {
             return hotel;
         };
 
+    /**
+     * 上限金額以下のホテルを検索する.
+     * @param borderPrice 上限金額
+     * @return 上限金額以下のホテル一覧
+     */
     public List<Hotel> searchRecord(Integer borderPrice){
         String sql = "SELECT id,area_name,hotel_name,address,nearest_station,price,parking FROM hotels WHERE price <= :border_price ORDER BY price";
         SqlParameterSource param = new MapSqlParameterSource().addValue("border_price", borderPrice);
@@ -37,6 +45,10 @@ public class SearchHotelRepository {
         return hotelList;
     }
 
+    /**
+     * 全てのホテルを検索する.
+     * @return ホテル一覧
+     */
     public List<Hotel> searchAll(){
         String sql = "SELECT id,area_name,hotel_name,address,nearest_station,price,parking FROM hotels ORDER BY price";
         List<Hotel> hotelList = template.query(sql, HOTEL_ROW_MAPPER);
