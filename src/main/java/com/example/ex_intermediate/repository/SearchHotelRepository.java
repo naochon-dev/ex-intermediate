@@ -31,9 +31,15 @@ public class SearchHotelRepository {
         };
 
     public List<Hotel> searchRecord(Integer borderPrice){
-        String sql = "SELECT id,area_name,hotel_name,address,nearest_station,price,parking FROM hotels WHERE price <= :border_price";
+        String sql = "SELECT id,area_name,hotel_name,address,nearest_station,price,parking FROM hotels WHERE price <= :border_price ORDER BY price";
         SqlParameterSource param = new MapSqlParameterSource().addValue("border_price", borderPrice);
         List<Hotel> hotelList = template.query(sql, param, HOTEL_ROW_MAPPER);
+        return hotelList;
+    }
+
+    public List<Hotel> searchAll(){
+        String sql = "SELECT id,area_name,hotel_name,address,nearest_station,price,parking FROM hotels ORDER BY price";
+        List<Hotel> hotelList = template.query(sql, HOTEL_ROW_MAPPER);
         return hotelList;
     }
 

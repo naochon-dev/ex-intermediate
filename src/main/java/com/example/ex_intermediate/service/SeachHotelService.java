@@ -20,4 +20,8 @@ public class SeachHotelService {
         return repository.searchRecord(borderPrice); 
     }
 
+    public List<Hotel> searchAll(){
+        return repository.searchAll();
+    }
+
 }

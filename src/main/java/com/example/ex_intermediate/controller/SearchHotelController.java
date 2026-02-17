@@ -26,7 +26,12 @@ public class SearchHotelController {
 
     @PostMapping("/showResult")
     public String showResult(Integer borderPrice, Model model){
-        List<Hotel> hotelList = service.searchRecord(borderPrice);
+        List<Hotel> hotelList;
+        if (borderPrice==null) {
+            hotelList = service.searchAll();
+        }else{
+            hotelList = service.searchRecord(borderPrice);
+        }        
         model.addAttribute("hotelList", hotelList);
         return "search_hotel";
     }
